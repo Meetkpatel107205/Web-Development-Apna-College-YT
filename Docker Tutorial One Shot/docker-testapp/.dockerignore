@@ -1,0 +1,66 @@
+# Node modules (never copy to image)
+node_modules/
+**/node_modules/
+
+# Logs
+npm-debug.log
+yarn-debug.log
+yarn-error.log
+pnpm-debug.log
+*.log
+
+# Environment files
+.env
+.env.*
+!.env.example
+
+# Git
+.git
+.gitignore
+
+# Docker files (optional)
+Dockerfile*
+docker-compose*.yml
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor / IDE files
+.vscode/
+.idea/
+
+# Test coverage
+coverage/
+
+# Build output
+dist/
+build/
+
+# Cache / temporary folders
+.cache/
+tmp/
+temp/
+*.tmp
+
+# Local data folders (for Mongo, images, uploads, etc.)
+data/
+uploads/
+public/uploads/
+db/
+mongo-data/
+redis-data/
+
+# Package manager caches
+.npm/
+.yarn/
+.pnpm-store/
+
+# Optional: Ignore frontend build artifacts (if full MERN repo)
+frontend/node_modules/
+frontend/build/
+frontend/dist/
+
+client/node_modules/
+client/build/
+client/dist/

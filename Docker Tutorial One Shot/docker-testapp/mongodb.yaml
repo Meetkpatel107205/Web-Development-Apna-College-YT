@@ -1,0 +1,92 @@
+version: "3.8"
+
+services:
+  mongo:
+    image: mongo
+    ports:
+    - "27017:27017"
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: qwerty
+    volumes:
+#   - host_dir:cont_dir
+    - /d/Meet VS 01/Web Development/Web Development - Apna College YT/Docker Tutorial One Shot/data:/data/db
+
+  mongo-express:
+    image: mongo-express
+    ports:
+    - "8081:8081"
+    environment:
+      ME_CONFIG_MONGODB_ADMINUSERNAME: admin
+      ME_CONFIG_MONGODB_ADMINPASSWORD: qwerty
+      ME_CONFIG_MONGODB_URL: mongodb://admin:qwerty@mongo:27017/
+
+# ============================
+# DOCKER COMPOSE YAML SYNTAX
+# ============================
+
+# version: "3.8"  
+#   -> Specifies the compose file version.
+
+# services:
+#   -> Defines all containers that will run together.
+
+#   service_name:
+#     -> Name of the service (container).
+
+#     image: image_name:tag
+#       -> Uses a ready-made image from Docker Hub (example: node:18, mongo:latest).
+
+#     build: .
+#       -> Builds an image from Dockerfile in current directory.
+#       -> Use this when your service has a custom Dockerfile.
+
+#     container_name: my-container
+#       -> Optional: assigns a fixed name to the container instead of a random one.
+
+#     ports:
+#     - "host_port:container_port"
+#       -> Maps container port to your computer's port.
+#       -> Example: "3000:3000"
+
+#     environment:
+#       KEY: value
+#       KEY2: value2
+#         -> Sets environment variables inside the container.
+#         -> Example: MONGO_INITDB_ROOT_USERNAME: admin
+
+#     volumes:
+#     - host_path:container_path
+#       -> Bind mount: uses a folder from your computer.
+#       -> Example: ./data:/data/db
+#
+#     - volume_name:container_path
+#       -> Named volume managed by Docker.
+#       -> Example: mongo-data:/data/db
+
+#     networks:
+#     - my-network
+#       -> Connects service to a custom network.
+#       -> All services in same network can talk using service names.
+
+#     depends_on:
+#     - other_service_name
+#       -> Controls startup order.
+#       -> Example: mongo-express depends on mongo.
+
+# ======================================
+# NETWORK DECLARATION (Optional Section)
+# ======================================
+# networks:
+#   my-network:
+#     driver: bridge
+#       -> Default network driver.
+#       -> Allows containers to communicate internally.
+
+# ======================================
+# VOLUME DECLARATION (Optional Section)
+# ======================================
+# volumes:
+#   volume_name:
+#     driver: local
+#       -> Stores data permanently on your system.
